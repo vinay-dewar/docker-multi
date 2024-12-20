@@ -1,0 +1,15 @@
+version: '3'
+services:
+    redis-server:
+        restart: on-failure #this will be start only if container stop with error code with 
+        image: redis
+    node-app:
+        restart: always
+        build: .
+        ports:
+            - 4001:8081
+# restart policy  ----> same container
+    # no        ----> no restart
+    # always    ---> any reason it will start
+    # on-failure  --> failure with error code
+    # unless-stopped  --> when we stopped manually
